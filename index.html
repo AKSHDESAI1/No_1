@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="inp">
+    <button onclick="sub()">Submit</button>
+    <div id="test"></div>
+</body>
+<script>
+    function sub() {
+        let inp = document.getElementById('inp');
+        let test = document.getElementById('test');
+        inp = inp.value;
+
+        if (localStorage.getItem("aksh") == null) {
+            arr = [];
+            arr.push(inp);
+            localStorage.setItem("aksh", inp);
+        }
+        else {
+            // q1 = localStorage.getItem('aksh');
+            // q2 = JSON.parse(q1);
+            arr.push(inp);
+            localStorage.setItem("aksh", JSON.stringify(arr));
+
+        }
+
+        let f1 = "";
+        arr.forEach((element, index) => {
+            f1 += `<h1>${index + 1}${element}</h1> <button onclick=deleted(${index})>Delete</button><br><br>`;
+
+        });
+
+        test.innerHTML = f1
+    }
+
+    function deleted(element) {
+        arr.splice(element, 1);
+        // let f1 = "";
+        localStorage.setItem("aksh", JSON.stringify(arr));
+        // sub()
+        let f1 = "";
+        arr.forEach((element, index) => {
+            f1 += `<h1>${index + 1}${element}</h1> <button onclick=deleted(${index})>Delete</button><br><br>`;
+
+        });
+
+        test.innerHTML = f1;
+
+    }
+</script>
+
+</html>
