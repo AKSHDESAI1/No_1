@@ -25,8 +25,8 @@
             localStorage.setItem("aksh", inp);
         }
         else {
-            // q1 = localStorage.getItem('aksh');
-            // q2 = JSON.parse(q1);
+            let q1 = localStorage.getItem('aksh');
+            arr = JSON.parse(q1);
             arr.push(inp);
             localStorage.setItem("aksh", JSON.stringify(arr));
 
